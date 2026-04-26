@@ -43,7 +43,7 @@ const AppShowcase = () => {
         <div ref={projectRef} className="w-full flex flex-col items-center text-center gap-8">
           <div className="w-full image-wrapper overflow-hidden rounded-2xl">
             <img 
-              src="/images/project1.png" 
+              src="./images/project1.png" 
               alt="Featured E-commerce Platform" 
               className="w-full h-auto object-cover"
             />

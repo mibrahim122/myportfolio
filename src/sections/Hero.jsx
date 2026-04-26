@@ -25,7 +25,7 @@
 //     >
 //       {/* Decorative Background Pattern */}
 //       <div className="absolute top-0 left-0 -z-10 opacity-50 pointer-events-none w-full h-full">
-//         <img src="/images/bg.png" alt="Decorative background" className="object-cover w-full h-full" />
+//         <img src="./images/bg.png" alt="Decorative background" className="object-cover w-full h-full" />
 //       </div>
 
 //       {/* 3D Background Particles layout */}
@@ -115,7 +115,7 @@ const Hero = () => {
       className="relative z-0 min-h-screen overflow-hidden" 
     >
       <div className="absolute top-0 left-0 -z-10 opacity-50 pointer-events-none w-full h-full">
-        <img src="/images/bg.png" alt="Decorative background" className="object-cover w-full h-full" />
+        <img src="./images/bg.png" alt="Decorative background" className="object-cover w-full h-full" />
       </div>
 
       <div className="absolute top-0 left-0 z-10 w-full h-screen pointer-events-auto">
