@@ -22,6 +22,10 @@ const Contact = () => {
     setLoading(true); // Show loading state
 
     try {
+      if (!import.meta.env.VITE_APP_EMAILJS_SERVICE_ID) {
+        throw new Error("EmailJS environment variables are missing!");
+      }
+
       await emailjs.sendForm(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
@@ -29,12 +33,15 @@ const Contact = () => {
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       );
 
+      setLoading(false);
+      alert("Your message has been sent successfully!");
+      
       // Reset form and stop loading
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error("EmailJS Error:", error); // Optional: show toast
-    } finally {
-      setLoading(false); // Always stop loading, even on error
+      setLoading(false);
+      console.error("EmailJS Error:", error);
+      alert("Something went wrong, please try again later.");
     }
   };
 
@@ -46,8 +53,8 @@ const Contact = () => {
           sub="💬 Have questions or ideas? Let’s talk! 🚀"
         />
         <div className="grid-12-cols mt-16">
-          <div className="xl:col-span-5">
-            <div className="flex-center card-border rounded-xl p-10">
+          <div className="xl:col-span-5 relative z-10">
+            <div className="flex flex-col justify-center items-center card-border rounded-xl p-5 md:p-10">
               <form
                 ref={formRef}
                 onSubmit={handleSubmit}
@@ -92,8 +99,8 @@ const Contact = () => {
                   />
                 </div>
 
-                <button type="submit">
-                  <div className="cta-button group">
+                <button type="submit" disabled={loading} className="w-full mt-4">
+                  <div className="cta-button group w-full flex justify-center items-center">
                     <div className="bg-circle" />
                     <p className="text">
                       {loading ? "Sending..." : "Send Message"}
