@@ -124,11 +124,11 @@ const Hero = () => {
 
       <div className="flex flex-col items-center justify-center text-center h-screen max-w-4xl mx-auto px-4 relative z-20 pointer-events-none">
         <div className="flex flex-col items-center gap-7 pointer-events-auto">
-          <h1 className="hero-text text-4xl md:text-6xl font-bold text-white">
+          <h1 className="hero-text text-4xl md:text-6xl font-bold" style={{ color: "var(--text-color)" }}>
             Crafting Scalable Web Applications with the MERN Stack
           </h1>
 
-          <p className="hero-text text-white-50 md:text-xl relative z-10 max-w-2xl">
+          <p className="hero-text md:text-xl relative z-10 max-w-2xl" style={{ color: "var(--text-color)" }}>
             Hi, I'm Muhammad Ibrahim, a passionate Full-Stack Developer. I build dynamic, responsive, and high-performance digital experiences from frontend to backend.
           </p>
 
@@ -145,7 +145,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="relative z-20 bg-black w-full">
+      <div className="relative z-20 w-full" style={{ backgroundColor: "var(--bg-color)" }}>
         <AnimatedCounter />
       </div>
     </section>

@@ -3,9 +3,20 @@ import emailjs from "@emailjs/browser";
 import TitleHeader from "../components/TitleHeader";
 import ContactExperience from "../components/models/contact/ContactExperience";
 
+const generateCaptcha = () => {
+  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let str = '';
+  for(let i = 0; i < 6; i++) {
+    str += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return str;
+};
+
 const Contact = () => {
   const formRef = useRef(null);
   const [loading, setLoading] = useState(false);
+  const [captchaCode, setCaptchaCode] = useState(generateCaptcha());
+  const [userCaptcha, setUserCaptcha] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -19,6 +30,14 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (userCaptcha !== captchaCode) {
+      alert("Incorrect Captcha");
+      setCaptchaCode(generateCaptcha());
+      setUserCaptcha("");
+      return;
+    }
+
     setLoading(true); // Show loading state
 
     try {
@@ -38,6 +57,8 @@ const Contact = () => {
       
       // Reset form and stop loading
       setForm({ name: "", email: "", message: "" });
+      setUserCaptcha("");
+      setCaptchaCode(generateCaptcha());
     } catch (error) {
       setLoading(false);
       console.error("EmailJS Error:", error);
@@ -97,6 +118,35 @@ const Contact = () => {
                     rows="5"
                     required
                   />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="captcha" style={{ color: "var(--text-color)" }}>Security Check</label>
+                  <div className="flex flex-col sm:flex-row gap-3 items-stretch">
+                    <div className="flex gap-3 items-stretch w-full sm:w-auto">
+                      <div className="flex items-center justify-center line-through tracking-widest font-bold py-2 px-4 rounded select-none border" style={{ color: "var(--text-color)", border: "1px solid var(--card-border-color)", backgroundColor: "var(--form-input-bg)" }}>
+                        {captchaCode}
+                      </div>
+                      <button 
+                        type="button" 
+                        onClick={() => setCaptchaCode(generateCaptcha())}
+                        className="text-sm px-4 py-2 rounded transition-colors border"
+                        style={{ color: "var(--text-color)", border: "1px solid var(--card-border-color)", backgroundColor: "var(--form-input-bg)" }}
+                      >
+                        Refresh
+                      </button>
+                    </div>
+                    <input
+                      type="text"
+                      id="captcha"
+                      value={userCaptcha}
+                      onChange={(e) => setUserCaptcha(e.target.value)}
+                      placeholder="Enter code"
+                      required
+                      className="w-full sm:flex-1 h-full py-2"
+                      style={{ border: "1px solid var(--card-border-color)", backgroundColor: "var(--form-input-bg)", color: "var(--text-color)" }}
+                    />
+                  </div>
                 </div>
 
                 <button type="submit" disabled={loading} className="w-full mt-4">
