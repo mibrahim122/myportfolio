@@ -260,6 +260,12 @@ const socialImgs = [
   {
     name: "linkedin",
     imgPath: "./images/linkedin.png",
+    url: "https://www.linkedin.com/in/muhammad-ibrahim-midev",
+  },
+  {
+    name: "github",
+    imgPath: "./images/github.png",
+    url: "https://github.com/mibrahim122",
   },
 ];
 
