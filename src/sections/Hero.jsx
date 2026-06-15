@@ -122,7 +122,7 @@ const Hero = () => {
         <HeroExperience />
       </div>
 
-      <div className="flex flex-col items-center justify-center text-center h-screen max-w-4xl mx-auto px-4 relative z-20 pointer-events-none">
+<div className="flex flex-col items-center justify-center text-center min-h-dvh pt-24 pb-12 max-w-4xl mx-auto px-4 relative z-20 pointer-events-none">
         <div className="flex flex-col items-center gap-7 pointer-events-auto">
           <h1 className="hero-text text-4xl md:text-6xl font-bold" style={{ color: "var(--text-color)" }}>
             Crafting Scalable Web Applications with the MERN Stack
