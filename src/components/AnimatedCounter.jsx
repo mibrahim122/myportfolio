@@ -68,7 +68,8 @@ const AnimatedCounter = () => {
             ref={(el) => el && (countersRef.current[index] = el)}
             className="bg-zinc-900 rounded-lg p-10 flex flex-col justify-center"
           >
-            <div className="counter-number text-white-50 text-5xl font-bold mb-2">
+            {/* Sirf yahan text-white-50 ki jagah gradient classes lagayi hain */}
+            <div className="counter-number text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-500 text-5xl font-bold mb-2">
               0{item.suffix}
             </div>
             <div className="text-white-50 text-lg">{item.label}</div>

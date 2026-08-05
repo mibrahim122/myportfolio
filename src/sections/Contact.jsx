@@ -150,7 +150,8 @@ const Contact = () => {
                 </div>
 
                 <button type="submit" disabled={loading} className="w-full mt-4">
-                  <div className="cta-button group w-full flex justify-center items-center">
+                  {/* Yahan sirf bg-gradient, text-white aur rounded-lg ka izafa kiya gaya hai colors ke liye */}
+                  <div className="cta-button group w-full flex justify-center items-center bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white rounded-lg">
                     <div className="bg-circle" />
                     <p className="text">
                       {loading ? "Sending..." : "Send Message"}

@@ -121,14 +121,23 @@ const ExperienceSection = () => {
                         <img src={card.logoPath} alt="logo" />
                       </div>
                       <div>
-                        <h1 className="font-semibold text-3xl">{card.title}</h1>
-                        <p className="my-5 text-white-50">
+                        {/* Title Gradient Color */}
+                        <h1 className="font-semibold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-500">
+                          {card.title}
+                        </h1>
+                        
+                        {/* Date Color */}
+                        <p className="my-5 text-purple-200">
                           🗓️&nbsp;{card.date}
                         </p>
-                        <p className="text-[#839CB5] italic">
+                        
+                        {/* Responsibilities Heading Color */}
+                        <p className="text-purple-400 italic">
                           Responsibilities
                         </p>
-                        <ul className="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                        
+                        {/* List Items Color */}
+                        <ul className="list-disc ms-5 mt-5 flex flex-col gap-5 text-gray-300">
                           {card.responsibilities.map(
                             (responsibility, index) => (
                               <li key={index} className="text-lg">
